@@ -21,31 +21,45 @@ document.addEventListener('click', e => {
   }
 });
 
-// Traducción simple ES <-> EN
+// Traducción simple ES <-> EN usando claves fijas
 const translations = {
   es: {
-    'Bienvenidos a CERO S.A.': 'Welcome to CERO S.A.',
-    'Somos una empresa de logística internacional con base en <strong>San Clemente del Tuyú, Argentina</strong>. Conectamos América y Europa ofreciendo soluciones personalizadas, rápidas y seguras para tus envíos.':
-      'We are an international logistics company based in <strong>San Clemente del Tuyú, Argentina</strong>. Connecting America and Europe with personalized, fast, and secure shipping solutions.',
-    '¿Por qué elegirnos?': 'Why choose us?',
-    'Más de 10 años de experiencia en transporte internacional.': 'Over 10 years of experience in international shipping.',
-    'Seguimiento en tiempo real y atención personalizada 24/7.': 'Real-time tracking and 24/7 personalized support.',
-    'Presencia en América y Europa.': 'Presence in America and Europe.',
-    'Nuestro compromiso': 'Our commitment',
-    'Operamos con estándares de calidad ISO 9001, prácticas sostenibles y vehículos eficientes para cuidar el medio ambiente y tu carga.':
-      'We operate with ISO 9001 quality standards, sustainable practices, and efficient vehicles to protect the environment and your cargo.',
-    'Selecciona un país': 'Select a country',
-    'Aquí aparecerán los precios estimados y los días hábiles de envío.': 'Estimated prices and shipping days will appear here.',
-    'Peso de la mercadería (kg): ': 'Weight of merchandise (kg):',
-    'Calcular envío': 'Calculate shipping',
-    'Días hábiles: ': 'Business days: ',
-    'Precio estimado: USD ': 'Estimated price: USD ',
+    welcome: 'Bienvenidos a CERO S.A.',
+    intro: 'Somos una empresa de logística internacional con base en <strong>San Clemente del Tuyú, Argentina</strong>. Conectamos América y Europa ofreciendo soluciones personalizadas, rápidas y seguras para tus envíos.',
+    whyChoose: '¿Por qué elegirnos?',
+    reason1: 'Más de 10 años de experiencia en transporte internacional.',
+    reason2: 'Seguimiento en tiempo real y atención personalizada 24/7.',
+    reason3: 'Presencia en América y Europa.',
+    commitment: 'Nuestro compromiso',
+    commitmentText: 'Operamos con estándares de calidad ISO 9001, prácticas sostenibles y vehículos eficientes para cuidar el medio ambiente y tu carga.',
+    selectCountry: 'Selecciona un país',
+    infoText: 'Aquí aparecerán los precios estimados y los días hábiles de envío.',
+    weightLabel: 'Peso de la mercadería (kg):',
+    calcBtn: 'Calcular envío',
+    businessDays: 'Días hábiles: ',
+    estimatedPrice: 'Precio estimado: USD ',
+    selectCountryError: 'Por favor selecciona un país primero.',
+    invalidWeightError: 'Ingresa un peso válido mayor que cero.'
   },
-  en: {}
+  en: {
+    welcome: 'Welcome to CERO S.A.',
+    intro: 'We are an international logistics company based in <strong>San Clemente del Tuyú, Argentina</strong>. Connecting America and Europe with personalized, fast, and secure shipping solutions.',
+    whyChoose: 'Why choose us?',
+    reason1: 'Over 10 years of experience in international shipping.',
+    reason2: 'Real-time tracking and 24/7 personalized support.',
+    reason3: 'Presence in America and Europe.',
+    commitment: 'Our commitment',
+    commitmentText: 'We operate with ISO 9001 quality standards, sustainable practices, and efficient vehicles to protect the environment and your cargo.',
+    selectCountry: 'Select a country',
+    infoText: 'Estimated prices and shipping days will appear here.',
+    weightLabel: 'Weight of merchandise (kg):',
+    calcBtn: 'Calculate shipping',
+    businessDays: 'Business days: ',
+    estimatedPrice: 'Estimated price: USD ',
+    selectCountryError: 'Please select a country first.',
+    invalidWeightError: 'Enter a valid weight greater than zero.'
+  }
 };
-translations.en = Object.fromEntries(
-  Object.entries(translations.es).map(([k, v]) => [v, k])
-);
 
 let currentLang = 'es';
 
@@ -56,22 +70,30 @@ translateBtn.addEventListener('click', () => {
 });
 
 function translatePage(lang) {
-  // Textos fijos
-  document.querySelector('.intro h2').textContent = translations[lang]['Bienvenidos a CERO S.A.'];
-  document.querySelector('.intro p').innerHTML = translations[lang]['Somos una empresa de logística internacional con base en <strong>San Clemente del Tuyú, Argentina</strong>. Conectamos América y Europa ofreciendo soluciones personalizadas, rápidas y seguras para tus envíos.'];
-  document.querySelector('.why-choose .card:nth-child(1) h3').textContent = translations[lang]['¿Por qué elegirnos?'];
+  document.querySelector('.intro h2').textContent = translations[lang].welcome;
+  document.querySelector('.intro p').innerHTML = translations[lang].intro;
+  document.querySelector('.why-choose .card:nth-child(1) h3').textContent = translations[lang].whyChoose;
   const reasons = document.querySelectorAll('.why-choose .card:nth-child(1) ul li');
-  reasons[0].textContent = translations[lang]['Más de 10 años de experiencia en transporte internacional.'];
-  reasons[1].textContent = translations[lang]['Seguimiento en tiempo real y atención personalizada 24/7.'];
-  reasons[2].textContent = translations[lang]['Presencia en América y Europa.'];
+  reasons[0].textContent = translations[lang].reason1;
+  reasons[1].textContent = translations[lang].reason2;
+  reasons[2].textContent = translations[lang].reason3;
 
-  document.querySelector('.why-choose .card:nth-child(2) h3').textContent = translations[lang]['Nuestro compromiso'];
-  document.querySelector('.why-choose .card:nth-child(2) p').textContent = translations[lang]['Operamos con estándares de calidad ISO 9001, prácticas sostenibles y vehículos eficientes para cuidar el medio ambiente y tu carga.'];
+  document.querySelector('.why-choose .card:nth-child(2) h3').textContent = translations[lang].commitment;
+  document.querySelector('.why-choose .card:nth-child(2) p').textContent = translations[lang].commitmentText;
 
-  document.getElementById('info-title').textContent = translations[lang]['Selecciona un país'];
-  document.getElementById('info-content').textContent = translations[lang]['Aquí aparecerán los precios estimados y los días hábiles de envío.'];
-  document.querySelector('label[for="pesoInput"]').textContent = translations[lang]['Peso de la mercadería (kg): '];
-  document.querySelector('#calcBtn').textContent = translations[lang]['Calcular envío'];
+  document.getElementById('info-title').textContent = translations[lang].selectCountry;
+  document.getElementById('info-content').textContent = translations[lang].infoText;
+  document.querySelector('label[for="pesoInput"]').textContent = translations[lang].weightLabel;
+  document.querySelector('#calcBtn').textContent = translations[lang].calcBtn;
+
+  // Actualizar resultado y contenido país seleccionado en traducción si hay alguno
+  const pesoInput = document.getElementById('pesoInput');
+  const paisSeleccionado = pesoInput.dataset.pais;
+  if (paisSeleccionado && countries[paisSeleccionado]) {
+    mostrarInfoPais(paisSeleccionado);
+  } else {
+    document.getElementById('resultadoPrecio').textContent = '';
+  }
 }
 
 // Datos de países: precio base y días hábiles
@@ -112,7 +134,7 @@ Object.entries(countries).forEach(([country, info]) => {
   };
 
   const marker = L.marker(coords[country]).addTo(map);
-  marker.bindPopup(`<strong>${country}</strong><br>Días hábiles: ${info.days}<br>Precio base: USD ${info.basePrice}`);
+  marker.bindPopup(`<strong>${country}</strong><br>${translations[currentLang].businessDays}${info.days}<br>${translations[currentLang].estimatedPrice}${info.basePrice}`);
   marker.on('click', () => {
     mostrarInfoPais(country);
   });
@@ -128,7 +150,7 @@ function mostrarInfoPais(country) {
   const pesoInput = document.getElementById('pesoInput');
 
   title.textContent = country;
-  content.textContent = `${(currentLang === 'es') ? 'Días hábiles: ' : 'Business days: '}${info.days}\n${(currentLang === 'es') ? 'Precio base: USD ' : 'Estimated price: USD '}${info.basePrice}`;
+  content.textContent = `${translations[currentLang].businessDays}${info.days}\n${translations[currentLang].estimatedPrice}${info.basePrice}`;
   resultado.textContent = '';
 
   pesoInput.value = 1;
@@ -145,12 +167,12 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   const pais = pesoInput.dataset.pais;
 
   if (!pais) {
-    resultado.textContent = (currentLang === 'es') ? 'Por favor selecciona un país primero.' : 'Please select a country first.';
+    resultado.textContent = translations[currentLang].selectCountryError;
     return;
   }
 
   if (isNaN(peso) || peso <= 0) {
-    resultado.textContent = (currentLang === 'es') ? 'Ingresa un peso válido mayor que cero.' : 'Enter a valid weight greater than zero.';
+    resultado.textContent = translations[currentLang].invalidWeightError;
     return;
   }
 
@@ -159,7 +181,7 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   // Precio ficticio: basePrice + 12 USD por kg extra
   const precioTotal = basePrice + (peso - 1) * 12;
 
-  resultado.textContent = (currentLang === 'es' ? 'Precio estimado: USD ' : 'Estimated price: USD ') + precioTotal.toFixed(2);
+  resultado.textContent = translations[currentLang].estimatedPrice + precioTotal.toFixed(2);
 });
 
 // Traducción inicial

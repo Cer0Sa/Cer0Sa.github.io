@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cero SA</title>
+  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CERO S.A. - Compañia de envios y rutas operativas</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2k1y0qMK+V+LZtqvT0IYbQ1eGk5Ugi6h2uH7k/k="
+    crossorigin=""
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* --- Aquí va tu CSS --- */
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/MbM84nV.png" alt="Logo CERO S.A." />
+    <h1>CERO S.A.</h1>
+    <p>Compañia de envios y rutas operativas</p>
+  </header>
+
+  <nav>
+    <div class="dropdown">
+      <button onclick="toggleMenu('dropdown-envios')">Envíos Internacionales ▼</button>
+      <div id="dropdown-envios" class="dropdown-content">
+        <a href="#" class="america" data-country="Argentina">Argentina</a>
+        <a href="#" class="america" data-country="Brasil">Brasil</a>
+        <a href="#" class="america" data-country="Chile">Chile</a>
+        <a href="#" class="america" data-country="México">México</a>
+        <a href="#" class="america" data-country="Colombia">Colombia</a>
+        <a href="#" class="america" data-country="Estados Unidos">Estados Unidos</a>
+        <a href="#" class="europa" data-country="España">España</a>
+        <a href="#" class="europa" data-country="Francia">Francia</a>
+        <a href="#" class="europa" data-country="Alemania">Alemania</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button onclick="toggleMenu('dropdown-contacto')">Contacto ▼</button>
+      <div id="dropdown-contacto" class="dropdown-content">
+        <a href="tel:+542252519478">Tel: +54 2252 51 9478</a>
+        <a href="mailto:cerohelp@gmail.com">Email: cerohelp@gmail.com</a>
+        <a href="https://www.google.com/search?q=San+Clemente+del+Tuy%C3%BA" target="_blank">San Clemente del Tuyú, Argentina</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button onclick="toggleMenu('dropdown-info')">Información ▼</button>
+      <div id="dropdown-info" class="dropdown-content">
+        <a href="#">Historia</a>
+        <a href="#">Servicios</a>
+        <a href="#">Tiempos de entrega</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button onclick="toggleMenu('dropdown-ayuda')">Ayuda ▼</button>
+      <div id="dropdown-ayuda" class="dropdown-content">
+        <a href="#">FAQ</a>
+        <a href="#">Centro de asistencia</a>
+        <a href="#">Seguimiento de envíos</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button onclick="toggleMenu('dropdown-trabajo')">Trabajadores ▼</button>
+      <div id="dropdown-trabajo" class="dropdown-content">
+        <a href="#">Nuestro equipo</a>
+        <a href="#">Carreras</a>
+        <a href="#">Capacitación</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="intro">
+    <h2>Bienvenidos a CERO S.A.</h2>
+    <p>Somos una empresa de logística internacional con base en <strong>San Clemente del Tuyú, Argentina</strong>. Conectamos América y Europa ofreciendo soluciones personalizadas, rápidas y seguras para tus envíos.</p>
+  </section>
+
+  <section class="why-choose">
+    <div class="card">
+      <h3>¿Por qué elegirnos?</h3>
+      <ul>
+        <li>En constante aprendizaje y mejoria.</li>
+        <li>Seguimiento en tiempo real y atención personalizada 24/7.</li>
+        <li>Presencia en América y Europa.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Nuestro compromiso</h3>
+      <p>Operamos con estándares de calidad ISO 9001, prácticas sostenibles y vehículos eficientes para cuidar el medio ambiente y tu carga.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="map" class="card"></section>
+    <section id="info-card" class="card">
+      <h2 id="info-title">Selecciona un país</h2>
+      <p id="info-content">Aquí aparecerán los precios estimados y los días hábiles de envío.</p>
+
+      <div id="calculadora-envio" style="margin-top: 15px;">
+        <label for="pesoInput">Peso de la mercadería (kg): </label>
+        <input type="number" id="pesoInput" min="0" step="0.1" value="1" />
+        <button id="calcBtn">Calcular envío</button>
+        <div id="resultadoPrecio" style="margin-top: 10px; font-weight: bold;"></div>
+      </div>
+    </section>
+  </main>
+
+  <button id="translateBtn" title="Translate page" aria-label="Translate page">EN / ES</button>
+
+  <footer>
+    &copy; 2025 CERO S.A. - Todos los derechos reservados.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    /* --- Tu JS va aquí --- */
+  </script>
+</body>
+</html>
+<!-- partial -->
+  <script src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
